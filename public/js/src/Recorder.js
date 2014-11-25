@@ -124,9 +124,10 @@ ar.Recorder = function() {
         var data = db.map(function(skeleton) {
             for (var jointName in skeleton.relativeData) {
                 skeleton.relativeData[jointName] = skeleton.relativeData[jointName].elements;
+                skeleton.absoluteData[jointName] = skeleton.absoluteData[jointName].elements;
             }
 
-            return skeleton.relativeData;
+            return skeleton;
         });
 
         // Save it to local storage.

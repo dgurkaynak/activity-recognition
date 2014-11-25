@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Viewer</title>
+    <link rel="stylesheet" href="./css/app.css">
+    <!-- <script src="./js/lib/socket.io-1.2.1.js"></script> -->
+    <script src='./js/lib/lodash.min.js'></script>
+    <script src='./js/lib/three.min.js'></script>
+    <!-- <script src='./js/lib/zig.min.js'></script> -->
+    <script src='./js/lib/sylvester.js'></script>
+    <script src='./js/lib/jquery-1.11.1.min.js'></script>
+
+    <script src='./js/src/Viewer.js'></script>
+    <script src='./js/src/entities/Skeleton.js'></script>
+</head>
+<body>
+    <div id="recordListContainer">
+        <select id="recordList" multiple></select>
+        <button id="removeItem">Remove</button>
+    </div>
+    <div class="buttonContainer">
+        <!-- <button id="record">Record</button> -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new ar.Viewer();
+        }, false);
+    </script>
+</body>
+</html>
