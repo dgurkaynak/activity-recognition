@@ -12,3 +12,5 @@ a[href="http://zigfu.com/watermark"] { opacity: 0; }
 .histogramBar { display: inline-block; vertical-align: bottom; width: 5px; background: yellow; height: 1px; }
 div[id^="histogramBarT"] { background: blue; }
 div[id^="histogramBarP"] { background: green; }
+
+#actionName { position: absolute; bottom: 0; left: 0; font-family: sans-serif; font-size: 40px; color: green; z-index: 1; }

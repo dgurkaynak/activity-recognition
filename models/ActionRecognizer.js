@@ -67,7 +67,7 @@ ActionRecognizer.run = function(data) {
  */
 ActionRecognizer.runWithSkeleton = function(skeleton) {
     var output = net.run(ActionRecognizer.preprocessSkeleton(skeleton));
-    console.log(output);
+    // console.log(output);
     return output;
 };
 
