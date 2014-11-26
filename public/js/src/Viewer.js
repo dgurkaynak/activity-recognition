@@ -25,7 +25,7 @@ ar.Viewer = function() {
     var db = localStorage.getItem('data');
     db = db ? JSON.parse(db) : [];
     var selectedIndex = 0;
-    var maxDisplacement = new ar.SkeletonMaxDisplacement();
+    var maxDisplacement = window.maxDisplacement = new ar.SkeletonMaxDisplacement();
 
     // Import db!
     db.forEach(function(skeleton) {
@@ -120,9 +120,8 @@ ar.Viewer = function() {
     $('#calcMaxDisplacement').click(function() {
         var skeletons = [];
 
-        _.forEachRight($("select option:selected"), function(el) {
-            db.splice(parseInt(el.value, 10), 1);
-            skeletons.push(db[selectedIndex]);
+        _.forEach($("select option:selected"), function(el) {
+            skeletons.push(db[parseInt(el.value, 10)]);
         });
 
         maxDisplacement.updateData(skeletons);
