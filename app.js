@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var ActionRecognizerTrainer = require('./models/ActionRecognizerTrainer');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
