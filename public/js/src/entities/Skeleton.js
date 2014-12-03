@@ -6,6 +6,7 @@
 ar.Skeleton = function(opt_rawData) {
     this.absoluteData = {};
     this.relativeData = {};
+    this.relativeSphericalData = {};
 
     if (opt_rawData)
         this.updateData(opt_rawData);
@@ -139,4 +140,18 @@ ar.Skeleton.prototype.getRelativeDiff = function(otherSkeleton) {
     }
 
     return diff;
+};
+
+
+/**
+ * Convert relative data to spherical vectors and save it.
+ */
+ar.Skeleton.prototype.updateSphericalData = function() {
+    if (_.isEmpty(this.relativeData))
+        return;
+
+    for (var jointName in this.relativeData) {
+        var sphericalData = ar.CoordinateHelper.convertCartesianToSpherical(this.relativeData[jointName]);
+        this.relativeSphericalData[jointName] = sphericalData;
+    }
 };
