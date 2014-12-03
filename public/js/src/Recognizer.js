@@ -28,15 +28,17 @@ ar.Recognizer = function() {
     });
 
     // Camera poisiton
-    camera.position.z = 2;
+    camera.position.z = 0;
+    camera.up = new THREE.Vector3(0, 1, 0);
+    camera.lookAt(new THREE.Vector3(0, 0, 5));
 
     // Update skeleton on scene.
     function updateSkeletonPosition() {
-        for (var jointName in skeleton.relativeData) {
+        for (var jointName in skeleton.absoluteData) {
             cubes[jointName].position.set(
-                skeleton.relativeData[jointName].elements[0], 
-                skeleton.relativeData[jointName].elements[1],
-                skeleton.relativeData[jointName].elements[2]
+                skeleton.absoluteData[jointName].elements[0], 
+                skeleton.absoluteData[jointName].elements[1],
+                skeleton.absoluteData[jointName].elements[2]
             );
         }
     }
