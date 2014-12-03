@@ -149,4 +149,15 @@ ar.Viewer = function() {
         var color = getRandomColor();
         $("select option:selected").css('background-color', color);
     });
+
+    $('#calcRelativeSphericalData').click(function() {
+        var data = {};
+
+        for (var jointName in db[selectedIndex].relativeData) {
+            var jointData = db[selectedIndex].relativeData[jointName];
+            data[jointName] = ar.CoordinateHelper.convertCartesianToSpherical(jointData);
+        }
+
+        window.skeletonData = data;
+    });
 };

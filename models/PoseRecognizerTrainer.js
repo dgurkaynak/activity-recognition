@@ -1,6 +1,6 @@
-var ActionRecognizer = require('./ActionRecognizer'),
+var PoseRecognizer = require('./PoseRecognizer'),
     fs = require('fs'),
-    filePath = './traindata/action',
+    filePath = './traindata/pose',
     files = fs.readdirSync(filePath),
     trainData = {};
 
@@ -11,5 +11,5 @@ files.forEach(function(fileName) {
     trainData[actionName] = data;
 });
 
-trainData = ActionRecognizer.preprocessTrainData(trainData);
-ActionRecognizer.train(trainData);
+trainData = PoseRecognizer.preprocessTrainData(trainData);
+PoseRecognizer.train(trainData);

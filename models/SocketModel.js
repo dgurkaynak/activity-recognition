@@ -1,6 +1,6 @@
 var io,
     self,
-    ActionRecognizer = require('./ActionRecognizer');
+    ActivityRecognizer = require('./ActivityRecognizer');
 
 
 /**
@@ -30,8 +30,8 @@ SocketModel.prototype.init = function() {
             console.log('user disconnected');
         });
 
-        socket.on('recognize-action', function (data, fn) {
-            fn(ActionRecognizer.runWithSkeleton(data));
+        socket.on('recognize', function (data, fn) {
+            fn(ActivityRecognizer.run(data));
         });
     });
 };

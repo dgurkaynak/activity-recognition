@@ -80,13 +80,22 @@ ar.Recognizer = function() {
         }
 
         maxDisplacementInterval = setInterval(function() {
+            // Handle max displacement data
             maxDisplacement.updateData(skeletonArray);
-            // console.log(maxDisplacement.sphericalData);
             updateMaxDisplacementPerJointHistogram();
+
+            // Handle relative skeleton data
+            var lastSkeleton = skeletonArray[skeletonArray.length - 1];
+            lastSkeleton.updateSphericalData();
+
+            // Clear skeletons
             skeletonArray = [];
 
-            // Socket
-            socket.emit('recognize-action', maxDisplacement.sphericalData, function (result) {
+            // Send data to backend for activity recognizing
+            socket.emit('recognize', {
+                skeleton: lastSkeleton.relativeSphericalData,
+                maxDisplacement: maxDisplacement.sphericalData
+            }, function (result) {
                 var action = null,
                     max = 0;
 
