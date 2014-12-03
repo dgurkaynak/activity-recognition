@@ -10,17 +10,74 @@
     <script src='./js/lib/zig.min.js'></script>
     <script src='./js/lib/sylvester.js'></script>
     <script src='./js/lib/jquery-1.11.1.min.js'></script>
+
+    <script src='./js/src/Recognizer.js'></script>
+    <script src='./js/src/helpers/CoordinateHelper.js'></script>
+    <script src='./js/src/entities/Skeleton.js'></script>
+    <script src='./js/src/entities/SkeletonMaxDisplacement.js'></script>
 </head>
 <body>
     <div id="fps"></div>
     <div class="buttonContainer">
-        <button id="record">Record</button>
+        <!-- <button id="record">Record</button> -->
     </div>
-    
-    <h1>Hello world!</h1>
+    <div class="histogramContainer">
+        <div id="histogramBarR0" class="histogramBar"></div>
+        <div id="histogramBarT0" class="histogramBar"></div>
+        <div id="histogramBarP0" class="histogramBar"></div>
+        <div id="histogramBarR1" class="histogramBar"></div>
+        <div id="histogramBarT1" class="histogramBar"></div>
+        <div id="histogramBarP1" class="histogramBar"></div>
+        <div id="histogramBarR2" class="histogramBar"></div>
+        <div id="histogramBarT2" class="histogramBar"></div>
+        <div id="histogramBarP2" class="histogramBar"></div>
+        <div id="histogramBarR3" class="histogramBar"></div>
+        <div id="histogramBarT3" class="histogramBar"></div>
+        <div id="histogramBarP3" class="histogramBar"></div>
+        <div id="histogramBarR4" class="histogramBar"></div>
+        <div id="histogramBarT4" class="histogramBar"></div>
+        <div id="histogramBarP4" class="histogramBar"></div>
+        <div id="histogramBarR5" class="histogramBar"></div>
+        <div id="histogramBarT5" class="histogramBar"></div>
+        <div id="histogramBarP5" class="histogramBar"></div>
+        <div id="histogramBarR6" class="histogramBar"></div>
+        <div id="histogramBarT6" class="histogramBar"></div>
+        <div id="histogramBarP6" class="histogramBar"></div>
+        <div id="histogramBarR7" class="histogramBar"></div>
+        <div id="histogramBarT7" class="histogramBar"></div>
+        <div id="histogramBarP7" class="histogramBar"></div>
+        <div id="histogramBarR8" class="histogramBar"></div>
+        <div id="histogramBarT8" class="histogramBar"></div>
+        <div id="histogramBarP8" class="histogramBar"></div>
+        <div id="histogramBarR9" class="histogramBar"></div>
+        <div id="histogramBarT9" class="histogramBar"></div>
+        <div id="histogramBarP9" class="histogramBar"></div>
+        <div id="histogramBarR10" class="histogramBar"></div>
+        <div id="histogramBarT10" class="histogramBar"></div>
+        <div id="histogramBarP10" class="histogramBar"></div>
+        <div id="histogramBarR11" class="histogramBar"></div>
+        <div id="histogramBarT11" class="histogramBar"></div>
+        <div id="histogramBarP11" class="histogramBar"></div>
+        <div id="histogramBarR12" class="histogramBar"></div>
+        <div id="histogramBarT12" class="histogramBar"></div>
+        <div id="histogramBarP12" class="histogramBar"></div>
+        <div id="histogramBarR13" class="histogramBar"></div>
+        <div id="histogramBarT13" class="histogramBar"></div>
+        <div id="histogramBarP13" class="histogramBar"></div>
+        <div id="histogramBarR14" class="histogramBar"></div>
+        <div id="histogramBarT14" class="histogramBar"></div>
+        <div id="histogramBarP14" class="histogramBar"></div>
+    </div>
+    <div id="actionName"></div>
 
     <script>
         var socket = io();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load zigfu
+            zig.addEventListener('loaded', function() {
+                new ar.Recognizer();
+            });
+        }, false);
     </script>
 </body>
 </html>
