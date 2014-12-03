@@ -1,7 +1,7 @@
 var ActivityRecognizer = {},
     PoseRecognizer = require('./PoseRecognizer'),
     ActionRecognizer = require('./ActionRecognizer'),
-    actionDisplacementThreshold = 0.35; // in meters
+    actionDisplacementThreshold = 0.5; // in meters
 
 
 /**
