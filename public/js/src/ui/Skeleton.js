@@ -115,8 +115,9 @@ ar.ui.Skeleton.LineBetweenJoints = [
     [ar.Skeleton.Joints[13], ar.Skeleton.Joints[8]], // right shoulder - elbow
     [ar.Skeleton.Joints[1], ar.Skeleton.Joints[3]], // left elbow - hand
     [ar.Skeleton.Joints[8], ar.Skeleton.Joints[10]], // right elbow - hand
-    [ar.Skeleton.Joints[6], ar.Skeleton.Joints[14]], // left shoulder - torso
-    [ar.Skeleton.Joints[13], ar.Skeleton.Joints[14]], // right shoulder - torso
+    [ar.Skeleton.Joints[7], ar.Skeleton.Joints[14]], // neck - torso
+    // [ar.Skeleton.Joints[6], ar.Skeleton.Joints[14]], // left shoulder - torso
+    // [ar.Skeleton.Joints[13], ar.Skeleton.Joints[14]], // right shoulder - torso
     [ar.Skeleton.Joints[14], ar.Skeleton.Joints[4]], // torso - left hip
     [ar.Skeleton.Joints[14], ar.Skeleton.Joints[11]], // torso - right hip
     [ar.Skeleton.Joints[4], ar.Skeleton.Joints[11]], // left hip - right hip
