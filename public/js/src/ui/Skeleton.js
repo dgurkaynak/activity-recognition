@@ -21,7 +21,12 @@ ar.ui.Skeleton = function(opt_skeleton, opt_options) {
 ar.ui.Skeleton.prototype.handleOptions = function(opt_options) {
     this.options = opt_options || {};
     this.options.relative = !!this.options.relative;
-    this.options.color = (!!this.options.randomColor) ? ar.ViewHelper.getRandomColor() : '#0f0';
+
+    if (!this.options.color)
+        this.options.color = (!!this.options.randomColor) ? ar.ViewHelper.getRandomColor() : '#0f0';
+    
+    this.options.lineWidth = this.options.lineWidth || 5;
+    this.options.sphereRadius = this.options.sphereRadius || 0.03;
 };
 
 
@@ -30,7 +35,7 @@ ar.ui.Skeleton.prototype.handleOptions = function(opt_options) {
  */
 ar.ui.Skeleton.prototype.init = function() {
     var that = this,
-        geometry = new THREE.SphereGeometry(0.02, 0.02, 0.02),
+        geometry = new THREE.SphereGeometry(this.options.sphereRadius, this.options.sphereRadius, this.options.sphereRadius),
         material = new THREE.MeshBasicMaterial({ color: this.options.color });
 
     ar.Skeleton.Joints.forEach(function(jointName) {
@@ -71,7 +76,7 @@ ar.ui.Skeleton.prototype.updateLines = function() {
     // Add new lines
     var that = this,
         data = this.options.relative ? this.skeleton.relativeData : this.skeleton.absoluteData,
-        lineMaterial = new THREE.LineBasicMaterial({ color: this.options.color, linewidth: 5 });
+        lineMaterial = new THREE.LineBasicMaterial({ color: this.options.color, linewidth: this.options.lineWidth });
 
     if (_.isEmpty(data))
         return;

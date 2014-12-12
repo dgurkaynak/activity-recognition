@@ -8,18 +8,21 @@ if (!ar)
  * @constructor
  */
 ar.Viewer = function() {
-    // Craete secene
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+    // Crate 3d world with white background for capturing
+    var ui = new ar.ui({
+        alphaRenderer: true
+    });
+    ar.ui.Renderer.setClearColor(0xffffff, 1); 
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    // Camera position
+    ar.ui.Camera.position.z = 2;
 
-    // Cubes
-    var geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-    var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-    var cubes = {};
+    // Main skeleton model
+    var skeletonModel = new ar.ui.Skeleton(null, { 
+        relative: true, 
+        color: '#000',
+        lineWidth: 8
+    });
 
     // Recording
     var db = localStorage.getItem('data');
@@ -36,14 +39,6 @@ ar.Viewer = function() {
         }
     });
 
-    ar.Skeleton.Joints.forEach(function(jointName) {
-        cubes[jointName] = new THREE.Mesh(geometry, material);
-        scene.add(cubes[jointName]);
-    });
-
-    // Camera poisiton
-    camera.position.z = 2;
-
     // Update skeleton on scene.
     var displayedSkeletonDataKey = 'relativeData';
     function updateSkeletonPosition() {
@@ -58,8 +53,9 @@ ar.Viewer = function() {
 
     // Render function
     function render() {
-        updateSkeletonPosition();
-        renderer.render(scene, camera);
+        skeletonModel.skeleton = db[selectedIndex];
+        skeletonModel.update();
+        ui.render();
     }
 
     // Db functions
