@@ -8,51 +8,26 @@ if (!ar)
  * @constructor
  */
 ar.Recorder = function() {
-    // Craete secene
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+    // Crate 3d world
+    var ui = new ar.ui();
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    // Cubes
-    var geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-    var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-    var cubes = {};
+    // Camera position
+    ar.ui.Camera.position.z = 2;
 
     // App variables
     var isRecording = false;
     var countdown = 10000; // in ms
-    var skeleton = new ar.Skeleton();
     var users = [];
     var db = [];
-
-    ar.Skeleton.Joints.forEach(function(jointName) {
-        cubes[jointName] = new THREE.Mesh(geometry, material);
-        scene.add(cubes[jointName]);
-    });
-
-    // Camera position
-    camera.position.z = 2;
-
-    // Update method for skeleton on scene.
-    function updateSkeletonPosition() {
-        for (var jointName in skeleton.relativeData) {
-            cubes[jointName].position.set(
-                skeleton.relativeData[jointName].elements[0], 
-                skeleton.relativeData[jointName].elements[1],
-                skeleton.relativeData[jointName].elements[2]
-            );
-        }
-    }
+    var skeleton = new ar.Skeleton();
+    var skeletonModel = new ar.ui.Skeleton(skeleton, { relative: true });
 
     // Render method
     var lastRenderedDate = new Date().getTime();
     function render() {
         // requestAnimationFrame( render );
-        updateSkeletonPosition();
-        renderer.render(scene, camera);
+        skeletonModel.update();
+        ui.render();
 
         // Fps
         var fps = parseInt(1000 / ((new Date().getTime()) - lastRenderedDate), 10);
