@@ -65,3 +65,22 @@ ar.CoordinateHelper.getAbsoluteSphericalVector = function(sphericalVector) {
 
     return vector;
 };
+
+
+/**
+ * Normalizes spherical vector. Maximum modulus is 1, if higher than 1, it will be considered as 1.
+ * @param {Array} sphericalVector
+ * @return {Array} [r, theta, phi]
+ *                     r: radius [0, 1]
+ *                     theta: [0, 1] in radians
+ *                     phi: [0, 1] in radians
+ */
+ar.CoordinateHelper.getNormalizedSphericalVector = function(sphericalVector) {
+    var vector = _.clone(sphericalVector);
+
+    vector[0] = Math.min(vector[0], 1);
+    vector[1] /= Math.PI;
+    vector[2] /= Math.PI;
+
+    return vector;
+};

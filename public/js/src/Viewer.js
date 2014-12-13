@@ -75,13 +75,15 @@ ar.Viewer = function() {
         $('[id^="histogramBar"]').css('height', '2px');
 
         var i = 0;
+        console.log(maxDisplacement.sphericalData);
         for (var jointName in maxDisplacement.sphericalData) {
-            var height0 = Math.round(maxDisplacement.sphericalData[jointName][0] * 300);
-            var height1 = Math.round(maxDisplacement.sphericalData[jointName][1] * 50 * maxDisplacement.sphericalData[jointName][0]);
-            var height2 = Math.round(maxDisplacement.sphericalData[jointName][2] * 50 * maxDisplacement.sphericalData[jointName][0]);
-            if (height0 == 0) height0 = 2;
-            if (height1 == 0) height1 = 2;
-            if (height2 == 0) height2 = 2;
+            var normalized = ar.CoordinateHelper.getNormalizedSphericalVector(maxDisplacement.sphericalData[jointName]);
+            var height0 = Math.round(normalized[0] * 200);
+            var height1 = Math.round(normalized[1] * 100);
+            var height2 = Math.round(normalized[2] * 100);
+            if (height0 == 0) height0 = 1;
+            if (height1 == 0) height1 = 1;
+            if (height2 == 0) height2 = 1;
             $('#histogramBarR'+i).css('height', height0 + 'px');
             $('#histogramBarT'+i).css('height', height1 + 'px');
             $('#histogramBarP'+i).css('height', height2 + 'px');
