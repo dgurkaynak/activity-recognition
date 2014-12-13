@@ -18,14 +18,17 @@ div[id^="histogramBarP"] { background: cornflowerblue; }
     position: absolute;
     left: 0;
     right: 0;
-    border-top: 1px dashed orange;
+    border-top: 1px dashed black;
     z-index: -1;
-    bottom: 150px;
+    bottom: 100px;
 }
 
-.limitA {
-    border-top: 1px dashed blue;
-    bottom: 100px;
+.transparentHeight {
+    display: inline-block; 
+    vertical-align: bottom; 
+    width: 5px;
+    height: 110px;
+    opacity: 0;
 }
 
 #actionName { position: absolute; bottom: 0; left: 0; font-family: sans-serif; font-size: 40px; color: green; z-index: 1; }

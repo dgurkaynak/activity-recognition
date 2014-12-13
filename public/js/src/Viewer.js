@@ -78,9 +78,9 @@ ar.Viewer = function() {
         console.log(maxDisplacement.sphericalData);
         for (var jointName in maxDisplacement.sphericalData) {
             var normalized = ar.CoordinateHelper.getNormalizedSphericalVector(maxDisplacement.sphericalData[jointName]);
-            var height0 = Math.round(normalized[0] * 200);
-            var height1 = Math.round(normalized[1] * 100);
-            var height2 = Math.round(normalized[2] * 100);
+            var height0 = Math.round(normalized[0] * 100);
+            var height1 = Math.round(normalized[0] * normalized[1] * 100);
+            var height2 = Math.round(normalized[0] * normalized[2] * 100);
             if (height0 == 0) height0 = 1;
             if (height1 == 0) height1 = 1;
             if (height2 == 0) height2 = 1;
