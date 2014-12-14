@@ -13,12 +13,14 @@ ar.Recognizer = function() {
     // Render loop
     var lastRenderedDate = new Date().getTime();
     function render() {
+        // Update user skeleton positions if exists
         if (users) {
             for (var user in users) {
                 users[user].update();
             }
         }
         
+        // Render
         ui.render();
 
         // Fps
@@ -85,7 +87,8 @@ ar.Recognizer = function() {
                     }
                 }
 
-                $('#actionName').text(action);
+                // Display recognised action in head label.
+                users[user.id].createHeadLabel(action);
             });
         }, maxDisplacementIntervalDuration);
 

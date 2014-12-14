@@ -10,6 +10,8 @@ ar.ui.Skeleton = function(opt_skeleton, opt_options) {
 
     this.joints = {};
     this.lines = [];
+    this.headLabel = null;
+
     this.init();   
 };
 
@@ -46,6 +48,25 @@ ar.ui.Skeleton.prototype.init = function() {
 
 
 /**
+ * Creates head label.
+ * @param  {String=} opt_text Text to be displayed.
+ */
+ar.ui.Skeleton.prototype.createHeadLabel = function(opt_text) {
+    opt_text = opt_text || '';
+
+    // Remove head label if exists
+    if (this.headLabel) {
+        ar.ui.Scene.remove(this.headLabel);
+        this.headLabel = null;
+    }
+
+    this.headLabel = ar.ViewHelper.makeTextSprite(opt_text, {fontsize: 32, fontface: "Verdana", fontColor: this.options.color});
+    this.headLabel.position.set(0,0,0);
+    ar.ui.Scene.add(this.headLabel);
+};
+
+
+/**
  * Updates skeleton joints and lines.
  */
 ar.ui.Skeleton.prototype.update = function() {
@@ -59,6 +80,11 @@ ar.ui.Skeleton.prototype.update = function() {
         );
     }
 
+    // Update head label
+    if (this.headLabel)
+        this.headLabel.position.set(data['Head'].elements[0], data['Head'].elements[1], data['Head'].elements[2]);
+
+    // Update lines
     this.updateLines();
 };
 
@@ -118,6 +144,10 @@ ar.ui.Skeleton.prototype.removeFromScene = function() {
         ar.ui.Scene.remove(this.joints[jointName]);
     }
     this.joints = {};
+
+    // Remove head label
+    ar.ui.Scene.remove(this.headLabel);
+    this.headLabel = null;
 };
 
 
