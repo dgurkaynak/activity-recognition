@@ -104,6 +104,24 @@ ar.ui.Skeleton.prototype.updateLines = function() {
 
 
 /**
+ * Removes from the scene.
+ */
+ar.ui.Skeleton.prototype.removeFromScene = function() {
+    // Remove all the lines
+    this.lines.forEach(function(line) {
+        ar.ui.Scene.remove(line);
+    });
+    this.lines = [];
+
+    // Remove all the joints
+    for (var jointName in this.joints) {
+        ar.ui.Scene.remove(this.joints[jointName]);
+    }
+    this.joints = {};
+};
+
+
+/**
  * Define lines between joints.
  * @type {Array}
  */
