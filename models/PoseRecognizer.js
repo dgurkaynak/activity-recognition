@@ -1,5 +1,7 @@
 var brain = require('brain'),
-    net = new brain.NeuralNetwork(),
+    net = new brain.NeuralNetwork({
+        hiddenLayers: [30]
+    }),
     PoseRecognizer = {};
 
 
