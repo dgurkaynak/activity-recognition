@@ -2,12 +2,11 @@
 
 **NOT MAINTAINED - ZigFu Project is not alive**
 
-This is my graduation project that can recognize predefined human poses and actions with Kinect. The whole project is built with just javascript and recent web technologies such as node.js, socket.io, WebGL (three.js), neural networks (brain.js).
+This is my graduation project that can recognize predefined human poses and actions, working with skeletal data coming from Kinect camera. The main idea is extracting features from displacements of an each joint applying HOG-variant approach. You can read or download the project report from [here](https://drive.google.com/open?id=1hLOigTqTmSn4d2URXfInRLS8PNGE9t8t).
 
-![Image of Yaktocat](http://new.tinygrab.com/97d28b815591c338641c3fe78485fe375bea098a06.png)
+The whole project is built with just javascript and ~~recent~~ web technologies such as node.js, socket.io, WebGL (three.js), neural networks (brain.js).
 
-The system is tracking 3 people.
-[Watch the single person test video on youtube.](http://www.youtube.com/watch?v=iBflPzJa2Pc)
+[![The system is tracking 3 people.](./images/tracking-3-people.png)](http://www.youtube.com/watch?v=iBflPzJa2Pc)
 
 ## Requirements
 * Kinect
@@ -25,6 +24,6 @@ The system is tracking 3 people.
 ## Predefined Poses and Actions
 The system has predefined 5 actions and 4 poses now, which can be seen below.
 
-![Predefined poses and actions](http://new.tinygrab.com/97d28b815527d1cc2807f5c420da26fe171e520eb9.png)
+![Predefined poses and actions](./images/predefined-actions-and-poses.png)
 
 Sure, you can add custom pose or custom data. Since there is no direct interface for adding activity, you have to dig viewer and recorder.
